@@ -3,10 +3,38 @@
     img
     {
         height: 700px;
+        position: absolute;
     }
     div
     {
         position: absolute;
+        border-radius: 50%;
+        width: 173px;
+        height: 173px;
+    }
+    .jobb
+    {
+        left: 300px;
+    }
+    #div1
+    {
+        background-color: red;
+        top: 52px;
+        left: 48px;
+    }
+    #div2
+    {
+        background-color: yellow;
+        top: 257px;
+        left: 53px;
+        display: none;
+    }
+    #div3
+    {
+        background-color: green;
+        top: 466px;
+        left: 52px;
+        display: none;
     }
 </style>
 <html lang="hu">
@@ -17,7 +45,43 @@
     <title>Lámpa</title>
 </head>
 <body>
-    <img src="assets/images/jelzolampa.jpg">
-    <img src="assets/images/vasuti-lampa.jpg">
+    <img src="assets/images/jelzolampa.jpg" onclick="Lampa()">
+    <img src="assets/images/vasuti-lampa.jpg" class="jobb">
+    <div id="div1" onclick="Lampa()"></div>
+    <div id="div2" onclick="Lampa()"></div>
+    <div id="div3" onclick="Lampa()"></div>
 </body>
 </html>
+<script>
+    var pos = 1;
+    var div1 = document.getElementById("div1");
+    var div2 = document.getElementById("div2");
+    var div3 = document.getElementById("div3");
+    function Lampa()
+    {
+        if (pos == 1)
+        {
+            div2.style.display = "block";
+            pos = 2;
+        }
+        else if (pos == 2)
+        {
+            div1.style.display = "none";
+            div2.style.display = "none";
+            div3.style.display = "block";
+            pos = 3;
+        }
+        else if (pos == 3)
+        {
+            div2.style.display = "block";
+            div3.style.display = "none";
+            pos = 4;
+        }
+        else if (pos == 4)
+        {
+            div1.style.display = "block";
+            div2.style.display = "none";
+            pos = 1;
+        }
+    }
+</script>
