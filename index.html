@@ -5,12 +5,39 @@
         height: 700px;
         position: absolute;
     }
-    div
+    .lampa
     {
         position: absolute;
         border-radius: 50%;
         width: 173px;
         height: 173px;
+    }
+    .vasut
+    {
+        position: absolute;
+        border-radius: 50%;
+        width: 49px;
+        height: 49px;
+    }
+    #p1
+    {
+        background-color: red;
+        top: 375px;
+        left: 359px;
+        display: none;
+    }
+    #p2
+    {
+        background-color: red;
+        top: 373px;
+        left: 469px;
+        display: none;
+    }
+    #f
+    {
+        background-color: white;
+        top: 472px;
+        left: 414px;
     }
     .jobb
     {
@@ -46,17 +73,29 @@
 </head>
 <body>
     <img src="assets/images/jelzolampa.jpg" onclick="Lampa()">
-    <img src="assets/images/vasuti-lampa.jpg" class="jobb">
-    <div id="div1" onclick="Lampa()"></div>
-    <div id="div2" onclick="Lampa()"></div>
-    <div id="div3" onclick="Lampa()"></div>
+    <img src="assets/images/vasuti-lampa.jpg" onclick="Lampa2()" class="jobb">
+    <div class="lampa" id="div1" onclick="Lampa()"></div>
+    <div class="lampa" id="div2" onclick="Lampa()"></div>
+    <div class="lampa" id="div3" onclick="Lampa()"></div>
+    <div class="vasut" id="p1" onclick="Lampa2()"></div>
+    <div class="vasut" id="p2" onclick="Lampa2()"></div>
+    <div class="vasut" id="f" onclick="Lampa2()"></div>
 </body>
 </html>
 <script>
+    var x;
+
     var pos = 1;
+    var lampa2 = 2;
+
     var div1 = document.getElementById("div1");
     var div2 = document.getElementById("div2");
     var div3 = document.getElementById("div3");
+
+    var p1 = document.getElementById("p1");
+    var p2 = document.getElementById("p2");
+    var f = document.getElementById("f");
+
     function Lampa()
     {
         if (pos == 1)
@@ -84,4 +123,60 @@
             pos = 1;
         }
     }
+
+    function Lampa2()
+    {
+        clearInterval(x);
+        if (lampa2 == 1)
+        {
+            p1.style.display = "none";
+            p2.style.display = "block";
+            f.style.display = "none";
+            x = setInterval(Piros, 500);
+            lampa2 = 2;
+        }
+        else if (lampa2 == 2)
+        {
+            p1.style.display = "none";
+            p2.style.display = "none";
+            f.style.display = "block";
+            x = setInterval(Feher, 500)
+            lampa2 = 1;
+        }
+    }
+
+    var piros = 1;
+    var feher = true;
+
+    function Piros()
+    {
+        if (piros == 1)
+        {
+            p1.style.display = "block";
+            p2.style.display = "none";
+            piros = 2;
+        }
+        else if (piros == 2)
+        {
+            p1.style.display = "none";
+            p2.style.display = "block";
+            piros = 1;
+        }
+    }
+    function Feher()
+    {
+        if (feher == 0)
+        {
+            f.style.display = "block";
+            feher = 1;
+        }
+        else
+        {
+            f.style.display = "none";
+            feher = 0;
+        }
+    }
+
+    Lampa2();
+
 </script>
