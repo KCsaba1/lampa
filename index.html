@@ -72,11 +72,11 @@
     <title>Lámpa</title>
 </head>
 <body>
-    <img src="assets/images/jelzolampa.jpg" onclick="Lampa()">
+    <img src="assets/images/jelzolampa.jpg" onclick="Lampa()" ondblclick="Katalizal()">
     <img src="assets/images/vasuti-lampa.jpg" onclick="Lampa2()" class="jobb">
-    <div class="lampa" id="div1" onclick="Lampa()"></div>
-    <div class="lampa" id="div2" onclick="Lampa()"></div>
-    <div class="lampa" id="div3" onclick="Lampa()"></div>
+    <div class="lampa" id="div1" onclick="Lampa()" ondblclick="Katalizal()"></div>
+    <div class="lampa" id="div2" onclick="Lampa()" ondblclick="Katalizal()"></div>
+    <div class="lampa" id="div3" onclick="Lampa()" ondblclick="Katalizal()"></div>
     <div class="vasut" id="p1" onclick="Lampa2()"></div>
     <div class="vasut" id="p2" onclick="Lampa2()"></div>
     <div class="vasut" id="f" onclick="Lampa2()"></div>
@@ -84,6 +84,7 @@
 </html>
 <script>
     var x;
+    var x2;
 
     var pos = 1;
     var lampa2 = 2;
@@ -174,6 +175,20 @@
         {
             f.style.display = "none";
             feher = 0;
+        }
+    }
+    var villog = false;
+    function Katalizal()
+    {
+        if (!villog)
+        {
+            x2 = setInterval(Lampa, 500);
+            villog = true;
+        }
+        else
+        {
+            clearInterval(x2);
+            villog = false;
         }
     }
 
